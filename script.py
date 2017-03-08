@@ -12,7 +12,7 @@ with open('2009precinctdata.json') as json_data:
 
 d = d['data']
 
-precode = [] #8
+precname = [] #8
 response = [] #10
 yes = [] #11
 no = [] #11
@@ -24,8 +24,7 @@ for x in range(0, len(d)):
     elif(d[x][10] == "No"):
         no.append(int(d[x][11]))
 
-resultsdf = pandas.DataFrame({"PRECCODE":precode, "yes":yes, "no":no})
+resultsdf = pandas.DataFrame({"PRECNAME":precname, "yes":yes, "no":no})
 
-merged = gdf.merge(gdf, on="PRECCODE")
-print merged.head()
+merged = gdf.merge(resultsdf, on="PRECNAME")
 #print sum(no)
