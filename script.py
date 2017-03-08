@@ -7,7 +7,7 @@ gdf = geopandas.read_file("Statewide_Prec_2016_NoWater/Statewide_Prec_2016_NoWat
 #print gdf.head()
 
 
-with open('2009precinctdata.json') as json_data:
+with open('2016precinctdata.json') as json_data:
     d = json.load(json_data)
 
 d = d['data']
@@ -19,7 +19,7 @@ no = [] #11
 first = False
 for x in range(0, len(d)):
     if(d[x][10] == "Yes"):
-        precode.append(d[x][8])
+        precname.append(d[x][8])
         yes.append(int(d[x][11]))
     elif(d[x][10] == "No"):
         no.append(int(d[x][11]))
@@ -27,4 +27,5 @@ for x in range(0, len(d)):
 resultsdf = pandas.DataFrame({"PRECNAME":precname, "yes":yes, "no":no})
 
 merged = gdf.merge(resultsdf, on="PRECNAME")
+print merged.head()
 #print sum(no)
