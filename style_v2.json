@@ -981,7 +981,22 @@
             "layout": {
                 "visibility": "visible"
             },
-            "paint": {}
+            "paint": {"fill-color": {
+				"property": "ResultPercent",
+				"type": "interval",
+				"stops": [
+					[0, "#ca0020"],
+					[.9999, "f7f7f7"],
+					[1.1, "#c6dbef"],
+					[1.7815, "#9ecae1"],
+					[2.127661, "#6baed6"],
+					[2.613637, "#4292c6"],
+					[3.20, "#2171b5"],
+					[4.333, "#084594"]
+				]
+				
+				}
+            }
         }
     ],
     "created": "2017-03-10T18:37:51.938Z",
