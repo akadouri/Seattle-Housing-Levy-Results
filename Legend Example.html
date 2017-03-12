@@ -1,0 +1,130 @@
+<html>
+
+<head>
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body>
+<div id='map'>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h2,
+h3 {
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+p {
+  font-size: 0.85em;
+  margin: 10px;
+  text-align: left;
+}
+
+/**
+* Create a position for the map
+* on the page */
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/**
+* Set rules for how the map overlays
+* (info box and legend) will be displayed
+* on the page. */
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+  font-family: Arial, sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+#features {
+  top: 0;
+  height: 100px;
+  margin-top: 20px;
+  width: 250px;
+}
+
+#legend {
+  padding: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 18px;
+  height: 150px;
+  margin-bottom: 40px;
+  width: 100px;
+}
+
+.legend-key {
+  display: inline-block;
+  border-radius: 20%;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+</style>
+</div>
+
+<div class='map-overlay' id='features'><h2 align="center">Seattle Skyscraper Projects (Under Construction)</div>
+
+<div class='map-overlay' id='legend'></div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiemVubW9vcmUiLCJhIjoiY2l6cW03aXY0MDBpMTMzbzU5MXN2amNmbCJ9.PFPxKzNWWwrqYCjjCUsfCA';
+	var map = new mapboxgl.Map({
+		container: 'map',
+		style: 'mapbox://styles/zenmoore/cizre8tqy00662smisbiqre0p'
+	});
+
+	map.on('load', function() {
+		map.getCanvas().style.cursor = 'default';
+		
+		var layers = ['<100ft', '100-300ft', '300-500ft', '500-700ft', '>700ft'];
+		
+		layers.forEach(function(layer) {
+			var color = map.getPaintProperty(layer, 'fill-color');
+			var item = document.createElement('div');
+			var key = document.createElement('span');
+			key.className = 'legend-key';
+			key.style.backgroundColor = color;
+
+			var value = document.createElement('span');
+			value.innerHTML = layer;
+			item.appendChild(key);
+			item.appendChild(value);
+			legend.appendChild(item);
+		});
+		
+		map.on('mousemove', function(e) {
+		  var buildings = map.queryRenderedFeatures(e.point, {
+			layers: layers
+		  });
+
+		  if (buildings.length > 0) {
+			document.getElementById('pd').innerHTML = '<h3><strong>' + buildings[0].properties.use + '</strong></h3><p><strong><em>' + buildings[0].properties.density + '</strong> people per square mile</em></p>';
+		  } else {
+			document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
+		  }
+		});
+	});
+</script>
+
+
+</body>
+
+</html>
