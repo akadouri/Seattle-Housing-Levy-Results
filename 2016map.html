@@ -27,26 +27,40 @@
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/zwash/cj04be47900442slfywu71p1s',
-      center: [-122.475989, 47.6147628],
+      center: [-122.35, 47.6147628],
       zoom: 11
     });
 
     //add the features to the map
     map.on('click', function(e) {
       var features = map.queryRenderedFeatures(e.point, {
-        layers: ['>3.5'] // replace this with the name of the layer
+        layers: ['precincts-9b271w', 'housing-projects-bls0jr'] // replace this with the name of the layer
       });
 
       if (!features.length) {
         return;
       }
 
-      //tutorial: https://www.mapbox.com/help/add-points-pt-3/
-      var popup = new mapboxgl.Popup({ offset: [0, -15] })
-        .setLngLat(feature.geometry.coordinates)
-        .setHTML('<h3>' + feature.properties.band + '</h3><p>' + feature.properties.name + '</p>')
-        .setLngLat(feature.geometry.coordinates)
-        .addTo(map);
+      var feature = features[0];
+
+      if(feature.layer.id === "precincts-9b271w") {
+        var coords = [feature.geometry.coordinates[0][0][0], feature.geometry.coordinates[0][0][1]];
+        //tutorial: https://www.mapbox.com/help/add-points-pt-3/
+        var popup = new mapboxgl.Popup({ offset: [-4, 0] })
+          .setLngLat(coords)
+          .setHTML('<h3>Precint: ' + feature.properties.PRECNAME + '</h3>'
+                    + '<p> Yes: ' + feature.properties.yes + '</p>'
+                    + '<p> No: ' + feature.properties.no + '</p>')
+          .addTo(map);
+      } else {
+        var coords = [feature.geometry.coordinates[0], feature.geometry.coordinates[1]];
+        //tutorial: https://www.mapbox.com/help/add-points-pt-3/
+        var popup = new mapboxgl.Popup({ offset: [0, -15] })
+          .setLngLat(coords)
+          .setHTML('<h3>' + feature.properties.Project + '</h3>'
+                    + '<p>' + feature.properties.Address + '</p>')
+          .addTo(map);
+      }
     });
     </script>
   </body>
