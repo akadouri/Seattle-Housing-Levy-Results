@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Points on a map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='map'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiendhc2giLCJhIjoiY2l6cmJqY2piMDIxYTJycWdpdnZsOWYzYyJ9.jZ2Bfd5ZrsWk_WIVyDEElQ';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/zwash/cj04be47900442slfywu71p1s',
+      center: [-122.475989, 47.6147628],
+      zoom: 11
+    });
+
+    //add the features to the map
+    map.on('click', function(e) {
+      var features = map.queryRenderedFeatures(e.point, {
+        layers: ['>3.5'] // replace this with the name of the layer
+      });
+
+      if (!features.length) {
+        return;
+      }
+
+      //tutorial: https://www.mapbox.com/help/add-points-pt-3/
+      var popup = new mapboxgl.Popup({ offset: [0, -15] })
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML('<h3>' + feature.properties.band + '</h3><p>' + feature.properties.name + '</p>')
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
+    });
+    </script>
+  </body>
+</html>
