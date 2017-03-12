@@ -7,6 +7,7 @@
 
 <body>
 <div id='map'>
+	
 <style>
 body {
   margin: 0;
@@ -78,6 +79,7 @@ p {
   margin-right: 5px;
 }
 </style>
+	
 </div>
 
 <div class='map-overlay' id='features'><h2 align="center">Seattle Skyscraper Projects (Under Construction)</div>
@@ -91,6 +93,7 @@ p {
 		style: 'mapbox://styles/zenmoore/cizre8tqy00662smisbiqre0p'
 	});
 
+	/* Populates the legend using the layer names and colors used in the mapbox style url */
 	map.on('load', function() {
 		map.getCanvas().style.cursor = 'default';
 		
@@ -110,17 +113,6 @@ p {
 			legend.appendChild(item);
 		});
 		
-		map.on('mousemove', function(e) {
-		  var buildings = map.queryRenderedFeatures(e.point, {
-			layers: layers
-		  });
-
-		  if (buildings.length > 0) {
-			document.getElementById('pd').innerHTML = '<h3><strong>' + buildings[0].properties.use + '</strong></h3><p><strong><em>' + buildings[0].properties.density + '</strong> people per square mile</em></p>';
-		  } else {
-			document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
-		  }
-		});
 	});
 </script>
 
