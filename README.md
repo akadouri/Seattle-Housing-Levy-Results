@@ -19,6 +19,6 @@
 
 The first screenshot is of a section of the 2009 map. This section of the map is significant because some of the precinct lines in the yellow highlighted box were re-drawn between the 2009 and 2016 elections. Since we used the 2016 precinct lines in both maps, we were unable to display the actual results for some of this area. Thus, there is likely some variance between the results of the election in 2009 and what we have displayed. However, since the precincts in this area are not near many housing projects, we assumed that the results in this area would not differ much between 2009 and 2016. Therefore, we included the 2016 precinct data in the 2009 map to show an approximation of the results in this area. 
 
-![screenshot 2](http://students.washington.edu/kieranos/Screenshot2.PNG)
+![screenshot 2](https://github.com/UW-GEOG458-Winter2017/Project5/blob/master/Screenshot2.PNG)
 
 The second screenshot shows a zoomed in section of the 2016 map. This screenshot shows the pop-up addition and the legend we added to help add further interactivity and clarity to the map. 
