@@ -1,6 +1,6 @@
 # Project5
 ## Affordable Housing Levy Maps
-### Ariel Kadouri, Kieran O’Sullivan, Zach Washington, Zen Moore
+### Ariel Kadouri, Kieran O’Sullivan, Zack Washington, Zen Moore
 
 ### Links
 * [Our write up is in the form of an ESRI story map.](http://uw-geog.maps.arcgis.com/apps/Cascade/index.html?appid=593d32ca56d741f585d46ce1a265bf7e)
