@@ -21,4 +21,4 @@ The first screenshot is of a section of the 2009 map. This section of the map is
 
 ![screenshot 2](http://students.washington.edu/kieranos/Screenshot2.PNG)
 
-The second screenshot shows a zoomed in section of the 2016 map. This screenshot shows the pop-up addition and the legend we added to help add clarity to the map. 
+The second screenshot shows a zoomed in section of the 2016 map. This screenshot shows the pop-up addition and the legend we added to help add further interactivity and clarity to the map. 
