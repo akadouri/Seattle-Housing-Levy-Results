@@ -16,3 +16,4 @@
 ### Screenshots
 
 ![screenshot 1](https://github.com/UW-GEOG458-Winter2017/Project5/blob/master/storymap%20screenshot.png)
+![screenshot 2](http://students.washington.edu/kieranos/Screenshot2.PNG)
